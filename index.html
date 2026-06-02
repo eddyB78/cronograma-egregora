@@ -780,16 +780,262 @@
 
   .badge-button:active { transform: translateY(0) scale(.98); }
 
-  /* ── RESPONSIVE ──────────────────────────────────────────────── */
-  @media (max-width: 640px) {
-    header { padding: 2.5rem 1.2rem 2rem; }
-    .wrapper { padding: 0 1.2rem 3rem; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .pilares-grid { grid-template-columns: repeat(2, 1fr); }
-    .card { grid-template-columns: 4px 44px 1fr; }
-    .print-btn { bottom: 1rem; right: 1rem; padding: .65rem 1.2rem; }
-    .quote-block { padding: 2rem 1.5rem; }
+  /* ── RESPONSIVE / MOBILE FIRST FIXES ─────────────────────────── */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, svg { max-width: 100%; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  @media (max-width: 900px) {
+    .wrapper {
+      max-width: 100%;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    header {
+      padding: 3.2rem 1.5rem 2.7rem;
+    }
+
+    .month-badge {
+      align-items: flex-start;
+      border-radius: 22px;
+      flex-wrap: wrap;
+    }
+
+    .badge-text { min-width: 0; }
+    .badge-sub { overflow-wrap: anywhere; }
+
+    .badge-button {
+      margin-left: auto;
+      min-height: 42px;
+    }
   }
+
+  @media (max-width: 720px) {
+    body { font-size: .9rem; }
+
+    header { padding: 2.7rem 1.2rem 2.2rem; }
+
+    .wrapper { padding: 0 1.1rem 3rem; }
+
+    main { padding-top: 2rem; }
+
+    .section { margin-bottom: 2.2rem; }
+
+    .header-pill {
+      font-size: .7rem;
+      padding: .28rem .75rem;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: clamp(2.1rem, 13vw, 3rem);
+    }
+
+    .header-sub {
+      font-size: .95rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .header-meta {
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .meta-chip {
+      width: 100%;
+      align-items: flex-start;
+      white-space: normal;
+      line-height: 1.4;
+      border-radius: 16px;
+      padding: .55rem .75rem;
+    }
+
+    .meta-chip svg { margin-top: .1rem; }
+
+    .stats-bar {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1.5rem;
+    }
+
+    .stat-item { padding: .9rem .7rem; }
+    .stat-num { font-size: 1.35rem; }
+    .stat-label { font-size: .65rem; }
+
+    .section-title {
+      align-items: flex-start;
+      gap: .5rem;
+    }
+
+    .section-title h2 { font-size: 1.2rem; }
+
+    .intro-block,
+    .fichario,
+    .online-card,
+    .obs-item {
+      border-radius: 16px;
+    }
+
+    .intro-block {
+      padding: 1rem 1rem;
+    }
+
+    .pilares-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .65rem;
+    }
+
+    .pilar-card { padding: .9rem; }
+
+    .fichario,
+    .online-card {
+      flex-direction: column;
+      gap: .7rem;
+      padding: 1rem;
+    }
+
+    .month-badge {
+      gap: .65rem;
+      padding: 1rem;
+    }
+
+    .badge-emoji { font-size: 1.15rem; }
+    .badge-title { font-size: .88rem; }
+    .badge-sub { font-size: .72rem; line-height: 1.45; }
+
+    .badge-count {
+      margin-left: 0;
+      align-self: flex-start;
+    }
+
+    .badge-button {
+      width: 100%;
+      margin-left: 0;
+      padding: .75rem 1rem;
+      font-size: .78rem;
+      text-align: center;
+      min-height: 46px;
+      white-space: normal;
+    }
+
+    .card {
+      grid-template-columns: 4px 42px minmax(0, 1fr);
+      border-radius: 16px;
+    }
+
+    .card-body {
+      padding: .85rem .9rem .8rem .85rem;
+    }
+
+    .card-top {
+      align-items: flex-start;
+      gap: .35rem;
+    }
+
+    .card-date {
+      width: 100%;
+      font-size: .8rem;
+    }
+
+    .pill {
+      font-size: .68rem;
+      line-height: 1.3;
+      white-space: normal;
+    }
+
+    .pill-obs {
+      margin-left: 0;
+    }
+
+    .quote-block { padding: 2rem 1.2rem; }
+    .quote-mark { font-size: 4rem; }
+    .welcome br { display: none; }
+
+    .print-btn {
+      bottom: 1rem;
+      right: 1rem;
+      left: 1rem;
+      width: calc(100% - 2rem);
+      justify-content: center;
+      padding: .75rem 1rem;
+    }
+
+    footer { padding: 1.4rem 1rem 5.2rem; }
+  }
+
+  @media (max-width: 480px) {
+    .wrapper { padding-left: .85rem; padding-right: .85rem; }
+    header { padding: 2.2rem .9rem 1.8rem; }
+
+    .stats-bar { grid-template-columns: 1fr 1fr; border-radius: 14px; }
+    .pilares-grid { grid-template-columns: 1fr; }
+
+    .month-badge {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      border-radius: 18px;
+      padding: .95rem;
+    }
+
+    .month-badge::after { width: 74px; height: 74px; }
+
+    .badge-count,
+    .badge-button {
+      grid-column: 1 / -1;
+    }
+
+    .badge-button { justify-self: stretch; }
+
+    .card {
+      grid-template-columns: 1fr;
+      position: relative;
+    }
+
+    .card-bar {
+      width: 100% !important;
+      height: 5px;
+    }
+
+    .card-num {
+      border-right: 0;
+      justify-content: flex-start;
+      padding: .75rem .9rem 0;
+    }
+
+    .num-circle {
+      width: 30px;
+      height: 30px;
+      font-size: .7rem;
+    }
+
+    .card-body { padding: .55rem .9rem 1rem; }
+    .card-tema { font-size: .84rem; }
+    .card-desc { font-size: .75rem; }
+
+    .info-card {
+      grid-template-columns: 4px 1fr;
+      gap: .7rem;
+      padding: 1rem;
+    }
+
+    .info-emoji,
+    .info-content { grid-column: 2; }
+    .info-bar { grid-row: 1 / span 2; }
+
+    .atv-chip { width: 100%; }
+    .obs-item { padding: .65rem .75rem; }
+  }
+
+  @media (max-width: 360px) {
+    .wrapper { padding-left: .7rem; padding-right: .7rem; }
+    .stat-num { font-size: 1.15rem; }
+    .month-badge { padding: .8rem; }
+    .badge-title { font-size: .82rem; }
+    .badge-sub { font-size: .68rem; }
+    .card-date { font-size: .76rem; }
+    .pill { font-size: .65rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -954,14 +1200,7 @@
       </div>
       <div class="badge-count">⚠️</div>
     </div>
-
-    <div class="cards-stack">
-
-
-
-
-
-
+  </section>
 
   <!-- AGOSTO -->
   <section class="section">
@@ -1317,7 +1556,7 @@
     <div class="month-badge" style="background:linear-gradient(135deg,#2e73c2,#3a85d4)">
       <span class="badge-emoji">📝</span>
       <div class="badge-text">
-        <div class="badge-title">Para participar desta caminhada, preencha o formulário de inscrição</div>
+        <div class="badge-title">Se desejar fazer parte desta caminhada, preencha o formulário de inscrição</div>
         <div class="badge-sub">Clique no botão ao lado para acessar o formulário.</div>
       </div>
       <a class="badge-button" href="https://forms.gle/rXtGpULRhRLaFbGb8" target="_blank" rel="noopener noreferrer">✍️ PREENCHER FORMULÁRIO</a>
