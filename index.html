@@ -182,6 +182,26 @@
 
   .meta-chip svg { opacity: .65; flex-shrink: 0; }
 
+  .map-chip {
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .2s, transform .15s, border-color .2s;
+  }
+
+  .map-chip:hover {
+    background: rgba(255,255,255,.14);
+    border-color: rgba(255,255,255,.24);
+    transform: translateY(-1px);
+  }
+
+  .footer-map-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .footer-map-link:hover { color: var(--navy); }
+
   /* stats bar */
   .stats-bar {
     display: grid;
@@ -701,37 +721,7 @@
     line-height: 1.8;
   }
 
-  /* ── PRINT BUTTON ────────────────────────────────────────────── */
-  .print-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--navy);
-    color: #fff;
-    border: none;
-    border-radius: var(--r-pill);
-    padding: .75rem 1.5rem;
-    font-family: var(--font-body);
-    font-size: .85rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: var(--shadow-lg);
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    transition: background .2s, transform .15s, box-shadow .2s;
-    z-index: 100;
-  }
-
-  .print-btn:hover {
-    background: var(--blue-mid);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(27,79,138,.25);
-  }
-
-  .print-btn:active { transform: translateY(0) scale(.98); }
-
-  /* ── ANIMATIONS ──────────────────────────────────────────────── */
+/* ── ANIMATIONS ──────────────────────────────────────────────── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -951,15 +941,6 @@
     .quote-mark { font-size: 4rem; }
     .welcome br { display: none; }
 
-    .print-btn {
-      bottom: 1rem;
-      right: 1rem;
-      left: 1rem;
-      width: calc(100% - 2rem);
-      justify-content: center;
-      padding: .75rem 1rem;
-    }
-
     footer { padding: 1.4rem 1rem 5.2rem; }
   }
 
@@ -1051,10 +1032,10 @@
     <p class="header-sub">Curso de Desenvolvimento Psicoespiritual</p>
 
     <div class="header-meta">
-      <span class="meta-chip">
+      <a class="meta-chip map-chip" href="https://www.google.com/maps/search/?api=1&query=Rua+Nau+S%C3%A3o+Gabriel+102+Felgueiras+Portugal" target="_blank" rel="noopener noreferrer" aria-label="Abrir endereço no Google Maps">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         Rua Nau São Gabriel, 102 · Felgueiras, Portugal
-      </span>
+      </a>
       <span class="meta-chip">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         Julho 2026 → Janeiro 2027
@@ -1571,16 +1552,8 @@
 <!-- FOOTER -->
 <footer>
   <strong>Egrégora Cria Ti na Luz</strong> · Portugal 2026 · Márcia Moraes<br>
-  Rua Nau São Gabriel, nº 102 · 4610-485 – Felgueiras, Portugal
+  <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Nau+S%C3%A3o+Gabriel+102+Felgueiras+Portugal" target="_blank" rel="noopener noreferrer">Rua Nau São Gabriel, nº 102 · 4610-485 – Felgueiras, Portugal</a>
 </footer>
-
-<!-- PRINT BUTTON -->
-<button class="print-btn no-print" onclick="window.print()">
-  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-    <path d="M6 9V2h12v7"/><rect x="6" y="17" width="12" height="5"/><path d="M6 12H4a2 2 0 0 0-2 2v3h4v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3h4v-3a2 2 0 0 0-2-2h-2"/>
-  </svg>
-  Imprimir / Salvar PDF
-</button>
 
 </body>
 </html>
