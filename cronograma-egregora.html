@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronograma — Egrégora Cria Ti na Luz · Portugal 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ── RESET & TOKENS ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #fefcfb;
+    --surface:    #ffffff;
+    --border:     #e8e4df;
+    --border-soft:#f0ece8;
+
+    --navy:       #1b4f8a;
+    --blue-mid:   #2e73c2;
+    --blue-bright:#4a9fe8;
+    --blue-soft:  #7ec8f5;
+    --blue-pale:  #daeef9;
+    --blue-ghost: #f0f7fd;
+
+    --ink:        #0f1f35;
+    --ink-mid:    #2d4a6e;
+    --ink-soft:   #5b7fa6;
+    --ink-muted:  #8fa8c4;
+
+    --gold:       #c8a95a;
+    --gold-pale:  #faf3e4;
+
+    --shadow-sm:  0 1px 3px rgba(27,79,138,.07), 0 1px 2px rgba(27,79,138,.04);
+    --shadow-md:  0 4px 16px rgba(27,79,138,.08), 0 1px 4px rgba(27,79,138,.04);
+    --shadow-lg:  0 12px 40px rgba(27,79,138,.10), 0 2px 8px rgba(27,79,138,.05);
+
+    --r-sm: 10px;
+    --r-md: 16px;
+    --r-lg: 24px;
+    --r-pill: 999px;
+
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body:    'Outfit', sans-serif;
+    --font-mono:    'DM Mono', monospace;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PRINT ──────────────────────────────────────────────────── */
+  @media print {
+    body { font-size: 10pt; }
+    .no-print { display: none !important; }
+    .page-break { page-break-before: always; }
+    .card { break-inside: avoid; }
+    header { page-break-after: avoid; }
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────────────── */
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* ── HEADER / CAPA ──────────────────────────────────────────── */
+  header {
+    background: linear-gradient(155deg, #0d2b52 0%, #1b4f8a 45%, #1e6b9e 100%);
+    color: #fff;
+    padding: 4rem 2rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 20%, rgba(74,159,232,.22) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 10% 85%, rgba(30,107,158,.3) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* star field */
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(200,232,255,.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 28% 72%, rgba(200,232,255,.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 35%, rgba(200,232,255,.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 58%, rgba(200,232,255,.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 15%, rgba(200,232,255,.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 80%, rgba(200,232,255,.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5%  55%, rgba(200,232,255,.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 52% 88%, rgba(200,232,255,.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 10%, rgba(200,232,255,.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 42%, rgba(200,232,255,.35) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .header-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: var(--r-pill);
+    padding: .3rem .9rem;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--blue-soft);
+    margin-bottom: 1.4rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .header-pill span { opacity: .6; }
+
+  header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    line-height: 1.08;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: .5rem;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--blue-soft);
+  }
+
+  .header-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(179,221,245,.85);
+    margin-bottom: 2.2rem;
+    letter-spacing: .01em;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+  }
+
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: var(--r-pill);
+    padding: .35rem .85rem;
+    font-size: .8rem;
+    font-weight: 500;
+    color: rgba(255,255,255,.85);
+    backdrop-filter: blur(4px);
+  }
+
+  .meta-chip svg { opacity: .65; flex-shrink: 0; }
+
+  /* stats bar */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,.08);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    margin-top: 2.5rem;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+
+  .stat-item {
+    background: rgba(13,43,82,.55);
+    backdrop-filter: blur(8px);
+    padding: 1rem 1.2rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-mono);
+    font-size: 1.65rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: .3rem;
+  }
+
+  .stat-label {
+    font-size: .72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--blue-soft);
+    opacity: .85;
+  }
+
+  /* ── MAIN CONTENT ────────────────────────────────────────────── */
+  main { padding-top: 3rem; }
+
+  /* ── SECTION ─────────────────────────────────────────────────── */
+  .section { margin-bottom: 3rem; }
+
+  /* ── INTRO BLOCK ─────────────────────────────────────────────── */
+  .intro-block {
+    border-left: 3px solid var(--blue-bright);
+    padding: 1.4rem 1.6rem;
+    background: var(--surface);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.8rem;
+  }
+
+  .intro-block p {
+    color: var(--ink-mid);
+    font-size: .93rem;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .intro-block p + p { margin-top: .75rem; }
+
+  /* ── PILARES GRID ────────────────────────────────────────────── */
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .75rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .pilar-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 1rem 1rem .9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+    transition: box-shadow .2s, border-color .2s, transform .2s;
+    cursor: default;
+  }
+
+  .pilar-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--blue-pale);
+    transform: translateY(-2px);
+  }
+
+  .pilar-icon {
+    width: 36px; height: 36px;
+    border-radius: var(--r-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .pilar-label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--ink-mid);
+    line-height: 1.3;
+  }
+
+  /* ── FICHARIO ─────────────────────────────────────────────────── */
+  .fichario {
+    background: var(--blue-ghost);
+    border: 2px solid var(--navy);
+    border-radius: var(--r-md);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .fichario-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+
+  .fichario-text strong {
+    display: block;
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: .35rem;
+  }
+
+  .fichario-text p {
+    font-size: .82rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ── MONTH BADGE ─────────────────────────────────────────────── */
+  .month-badge {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: .85rem 1.3rem;
+    border-radius: var(--r-pill);
+    color: #fff;
+    margin-bottom: 1.1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .month-badge::after {
+    content: '';
+    position: absolute;
+    right: -20px; top: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.07);
+    pointer-events: none;
+  }
+
+  .badge-emoji {
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.2));
+  }
+
+  .badge-text { flex: 1; }
+
+  .badge-title {
+    font-size: .92rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    line-height: 1.2;
+  }
+
+  .badge-sub {
+    font-size: .73rem;
+    font-weight: 400;
+    opacity: .78;
+    margin-top: .1rem;
+  }
+
+  .badge-count {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: var(--r-pill);
+    padding: .2rem .65rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── CARD ────────────────────────────────────────────────────── */
+  .cards-stack { display: flex; flex-direction: column; gap: .65rem; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    display: grid;
+    grid-template-columns: 4px 52px 1fr;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s, transform .2s;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  /* color bar */
+  .card-bar { width: 4px; }
+
+  /* number circle */
+  .card-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 .5rem;
+    border-right: 1px solid var(--border-soft);
+  }
+
+  .num-circle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .72rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+
+  /* card body */
+  .card-body {
+    padding: .9rem 1.1rem .85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    min-width: 0;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+
+  .card-date {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--ink-mid);
+    flex-shrink: 0;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--r-pill);
+    padding: .18rem .65rem;
+    font-size: .72rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pill-hora {
+    border: 1.5px solid;
+    background: transparent;
+  }
+
+  .pill-mod {
+    background: #f0ece8;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .pill-obs {
+    margin-left: auto;
+    background: var(--gold-pale);
+    color: #8a6a20;
+    font-style: italic;
+    font-weight: 400;
+    font-size: .7rem;
+  }
+
+  .card-tema {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: .78rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* ── INFO CARD (pausa / retorno) ─────────────────────────────── */
+  .info-card {
+    background: var(--ink);
+    border-radius: var(--r-md);
+    padding: 1.1rem 1.4rem;
+    display: grid;
+    grid-template-columns: 4px auto 1fr;
+    gap: 0 1rem;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+  }
+
+  .info-bar { width: 4px; border-radius: 4px; align-self: stretch; }
+
+  .info-emoji {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .info-content {}
+
+  .info-title {
+    font-size: .88rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: .2rem;
+  }
+
+  .info-sub {
+    font-size: .76rem;
+    color: var(--blue-pale);
+    opacity: .8;
+  }
+
+  /* ── ONLINE CARD ─────────────────────────────────────────────── */
+  .online-card {
+    background: var(--surface);
+    border: 2px solid var(--blue-bright);
+    border-radius: var(--r-md);
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1rem;
+  }
+
+  .online-card .oi-emoji { font-size: 1.7rem; line-height: 1; flex-shrink: 0; margin-top: .1rem; }
+
+  .online-card strong {
+    display: block;
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: .4rem;
+  }
+
+  .online-card p {
+    font-size: .83rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* ── ATIVIDADES ROW ──────────────────────────────────────────── */
+  .atv-row {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+  }
+
+  .atv-chip {
+    background: var(--bg);
+    border: 1.2px solid var(--blue-pale);
+    border-radius: var(--r-sm);
+    padding: .4rem .8rem;
+    font-size: .76rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  /* ── SECTION TITLE ───────────────────────────────────────────── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: .7rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .section-title h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .section-title .accent-line {
+    height: 2px;
+    flex: 1;
+    background: linear-gradient(90deg, var(--blue-pale) 0%, transparent 100%);
+    border-radius: 1px;
+  }
+
+  /* ── OBS LIST ────────────────────────────────────────────────── */
+  .obs-list { display: flex; flex-direction: column; gap: .55rem; }
+
+  .obs-item {
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+    padding: .7rem .9rem;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .obs-emoji { font-size: 1rem; line-height: 1.5; flex-shrink: 0; }
+
+  .obs-text {
+    font-size: .84rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ── CITACAO FINAL ───────────────────────────────────────────── */
+  .quote-block {
+    background: var(--ink);
+    border-radius: var(--r-lg);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2.5rem;
+  }
+
+  .quote-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 30%, rgba(46,115,194,.2) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 80% 70%, rgba(30,107,158,.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: .6;
+    color: var(--blue-mid);
+    opacity: .4;
+    display: block;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 3vw, 1.55rem);
+    font-style: italic;
+    color: var(--blue-soft);
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quote-attr {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--blue-pale);
+    opacity: .65;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── BEM-VINDOS ──────────────────────────────────────────────── */
+  .welcome {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .welcome h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: .7rem;
+  }
+
+  .welcome p {
+    font-size: .92rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.6rem 2rem;
+    text-align: center;
+    font-size: .77rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+  }
+
+  /* ── PRINT BUTTON ────────────────────────────────────────────── */
+  .print-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: var(--r-pill);
+    padding: .75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    z-index: 100;
+  }
+
+  .print-btn:hover {
+    background: var(--blue-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(27,79,138,.25);
+  }
+
+  .print-btn:active { transform: translateY(0) scale(.98); }
+
+  /* ── ANIMATIONS ──────────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card { animation: fadeUp .4s ease both; }
+  .card:nth-child(1)  { animation-delay: .05s }
+  .card:nth-child(2)  { animation-delay: .10s }
+  .card:nth-child(3)  { animation-delay: .15s }
+  .card:nth-child(4)  { animation-delay: .20s }
+  .card:nth-child(5)  { animation-delay: .25s }
+  .card:nth-child(6)  { animation-delay: .30s }
+  .card:nth-child(7)  { animation-delay: .35s }
+  .card:nth-child(8)  { animation-delay: .40s }
+  .card:nth-child(9)  { animation-delay: .45s }
+  .card:nth-child(10) { animation-delay: .50s }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    header { padding: 2.5rem 1.2rem 2rem; }
+    .wrapper { padding: 0 1.2rem 3rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .pilares-grid { grid-template-columns: repeat(2, 1fr); }
+    .card { grid-template-columns: 4px 44px 1fr; }
+    .print-btn { bottom: 1rem; right: 1rem; padding: .65rem 1.2rem; }
+    .quote-block { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <div class="header-pill">
+      <span>✦</span> Portugal 2026 <span>✦</span>
+    </div>
+
+    <h1>Egrégora<br><em>Cria Ti na Luz</em></h1>
+    <p class="header-sub">Curso de Desenvolvimento Psicoespiritual</p>
+
+    <div class="header-meta">
+      <span class="meta-chip">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Rua Nau São Gabriel, 102 · Felgueiras, Portugal
+      </span>
+      <span class="meta-chip">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Julho 2026 → Janeiro 2027
+      </span>
+      <span class="meta-chip">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Responsável · Márcia Moraes
+      </span>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Encontros</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Países</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Meses Pres.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2027</div>
+        <div class="stat-label">Expansão</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ────────────────────────────────────────────────────── -->
+<main>
+<div class="wrapper">
+
+  <!-- INTRODUÇÃO -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Uma Nova Etapa na Construção Mediúnica</h2>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="intro-block">
+      <p>O Curso de Desenvolvimento Psicoespiritual da Egrégora Cria Ti na Luz nasce com um propósito maior do que simplesmente desenvolver a mediunidade. Estamos construindo, passo a passo, as bases energéticas e espirituais da futura expansão da Egrégora em Portugal.</p>
+      <p>Mediunidade não é apenas incorporar entidades. É desenvolver percepção, disciplina, equilíbrio emocional, intuição, sensibilidade, liderança e responsabilidade perante a vida.</p>
+    </div>
+
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-icon" style="background:#daeef9">🔥</div>
+        <div class="pilar-label">Disciplina Espiritual</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon" style="background:#daeef9">⚡</div>
+        <div class="pilar-label">Responsabilidade Energética</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon" style="background:#daeef9">🤝</div>
+        <div class="pilar-label">Construção de Vínculos</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon" style="background:#daeef9">🕊️</div>
+        <div class="pilar-label">Ética Mediúnica</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon" style="background:#daeef9">👑</div>
+        <div class="pilar-label">Formação de Lideranças</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon" style="background:#daeef9">🌟</div>
+        <div class="pilar-label">Sustentação de Correntes</div>
+      </div>
+    </div>
+
+    <div class="fichario">
+      <div class="fichario-icon">📖</div>
+      <div class="fichario-text">
+        <strong>Fichário Iniciático da Egrégora Cria Ti na Luz</strong>
+        <p>Fundamentos · Diretrizes espirituais · Pontos riscados · Guias espirituais · Fundamentos de firmezas · Ancoramentos energéticos · Preceitos mediúnicos · Espaços para anotações, revelações e experiências pessoais.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JULHO -->
+  <section class="section">
+    <div class="month-badge" style="background:linear-gradient(135deg,#1b4f8a,#2563a8)">
+      <span class="badge-emoji">🌙</span>
+      <div class="badge-text">
+        <div class="badge-title">Julho 2026</div>
+        <div class="badge-sub">2 encontros presenciais · Felgueiras</div>
+      </div>
+      <div class="badge-count">01 – 02</div>
+    </div>
+
+    <div class="cards-stack">
+
+      <div class="card">
+        <div class="card-bar" style="background:#1b4f8a"></div>
+        <div class="card-num">
+          <div class="num-circle" style="background:#1b4f8a">01</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 25 de Julho</span>
+            <span class="pill pill-hora" style="border-color:#1b4f8a;color:#1b4f8a">16h30</span>
+            <span class="pill pill-mod">Presencial</span>
+            <span class="pill pill-obs">Entrega do Livro Iniciático</span>
+          </div>
+          <div class="card-tema">Ancorando a Fonte Energética e Espiritual do Médium</div>
+          <div class="card-desc">Ancoramento das guias consagradas · Conexão ao Ponto de Transição · Reconhecimento dos pontos energéticos · Entrega do Fichário Iniciático</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#1b4f8a"></div>
+        <div class="card-num">
+          <div class="num-circle" style="background:#1b4f8a">02</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 26 de Julho</span>
+            <span class="pill pill-hora" style="border-color:#1b4f8a;color:#1b4f8a">10h00</span>
+            <span class="pill pill-mod">Presencial</span>
+            <span class="pill pill-obs">Ritual com ervas sagradas</span>
+          </div>
+          <div class="card-tema">Amaci e os Pontos Riscados no Corpo Humano</div>
+          <div class="card-desc">Ritual de Amaci · Compreensão das ervas mediúnicas · Pontos riscados no corpo · Construção da identidade espiritual</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+ <!-- Observação -->
+  <section class="section">
+    <div class="month-badge" style="background:linear-gradient(135deg,#2e73c2,#3a85d4)">
+      <span class="badge-emoji">🧐</span>
+      <div class="badge-text">
+        <div class="badge-title">Observação</div>
+        <div class="badge-sub">Entre 29/08 e 13/09, algumas datas e horários poderão ser ajustados devido a uma aula na Casa de Valdemar. As confirmações serão enviadas ao grupo</div>
+      </div>
+      <div class="badge-count">⚠️</div>
+    </div>
+
+    <div class="cards-stack">
+
+
+
+
+
+
+
+  <!-- AGOSTO -->
+  <section class="section">
+    <div class="month-badge" style="background:linear-gradient(135deg,#2e73c2,#3a85d4)">
+      <span class="badge-emoji">🌿</span>
+      <div class="badge-text">
+        <div class="badge-title">Agosto 2026</div>
+        <div class="badge-sub">8 encontros presenciais · Felgueiras</div>
+      </div>
+      <div class="badge-count">03 – 10</div>
+    </div>
+
+    <div class="cards-stack">
+
+      <!-- cards 03 a 10 -->
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">03</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 01 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">16h30</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">04</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 08 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">16h30</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">05</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 09 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">10h00</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">06</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 15 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">16h30</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto · parte das atividades na Casa de Valdemar</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">07</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 22 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">16h30</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">08</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 23 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">10h00</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">09</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 29 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">A confirmar</span>
+            <span class="pill pill-mod">Presencial</span>
+            <span class="pill pill-obs">Horário a confirmar</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#2e73c2"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2e73c2">10</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 30 de Agosto</span>
+            <span class="pill pill-hora" style="border-color:#2e73c2;color:#2e73c2">A confirmar</span>
+            <span class="pill pill-mod">Presencial</span>
+            <span class="pill pill-obs">Horário a confirmar</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SETEMBRO -->
+  <section class="section page-break">
+    <div class="month-badge" style="background:linear-gradient(135deg,#1e6b9e,#2980b9)">
+      <span class="badge-emoji">🔥</span>
+      <div class="badge-text">
+        <div class="badge-title">Setembro 2026</div>
+        <div class="badge-sub">4 encontros + pausa · Felgueiras</div>
+      </div>
+      <div class="badge-count">11 – 14</div>
+    </div>
+
+    <div class="cards-stack">
+
+      <div class="card">
+        <div class="card-bar" style="background:#1e6b9e"></div>
+        <div class="card-num"><div class="num-circle" style="background:#1e6b9e">11</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 05 de Setembro</span>
+            <span class="pill pill-hora" style="border-color:#1e6b9e;color:#1e6b9e">A confirmar</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#1e6b9e"></div>
+        <div class="card-num"><div class="num-circle" style="background:#1e6b9e">12</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 06 de Setembro</span>
+            <span class="pill pill-hora" style="border-color:#1e6b9e;color:#1e6b9e">A confirmar</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#1e6b9e"></div>
+        <div class="card-num"><div class="num-circle" style="background:#1e6b9e">13</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Sábado, 12 de Setembro</span>
+            <span class="pill pill-hora" style="border-color:#1e6b9e;color:#1e6b9e">A confirmar</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Tema a ser definido com o grupo</div>
+          <div class="card-desc">Atividade a ser desenvolvida em conjunto · parte das atividades na Casa de Valdemar</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-bar" style="background:#1e6b9e"></div>
+        <div class="card-num"><div class="num-circle" style="background:#1e6b9e">14</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 13 de Setembro</span>
+            <span class="pill pill-hora" style="border-color:#1e6b9e;color:#1e6b9e">A confirmar</span>
+            <span class="pill pill-mod">Presencial</span>
+          </div>
+          <div class="card-tema">Último encontro antes da pausa</div>
+          <div class="card-desc">Encerramento do ciclo presencial antes do intervalo</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- pausa -->
+    <div style="margin-top:1.2rem">
+      <div class="info-card">
+        <div class="info-bar" style="background:#7ec8f5"></div>
+        <div class="info-emoji">🌙</div>
+        <div class="info-content">
+          <div class="info-title">Pausa do Ponto de Transição</div>
+          <div class="info-sub">13 de Setembro até 26 de Setembro de 2026 · Pausa temporária das atividades presenciais</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETORNO + ONLINE -->
+  <section class="section">
+    <div class="month-badge" style="background:linear-gradient(135deg,#2980b9,#4a9fe8)">
+      <span class="badge-emoji">🌟</span>
+      <div class="badge-text">
+        <div class="badge-title">Retorno — 27 de Setembro</div>
+        <div class="badge-sub">Reabertura do Ponto de Transição</div>
+      </div>
+      <div class="badge-count">15</div>
+    </div>
+
+    <div class="cards-stack" style="margin-bottom:1.8rem">
+      <div class="card">
+        <div class="card-bar" style="background:#2980b9"></div>
+        <div class="card-num"><div class="num-circle" style="background:#2980b9">15</div></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-date">Domingo, 27 de Setembro</span>
+            <span class="pill pill-hora" style="border-color:#2980b9;color:#2980b9">10h00</span>
+            <span class="pill pill-mod">Presencial</span>
+            <span class="pill pill-obs">Reabertura energética</span>
+          </div>
+          <div class="card-tema">Retorno das Atividades Presenciais</div>
+          <div class="card-desc">Tema a ser definido · Reabertura energética do Ponto de Transição de Portugal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="month-badge" style="background:linear-gradient(135deg,#1565a0,#1b4f8a)">
+      <span class="badge-emoji">💻</span>
+      <div class="badge-text">
+        <div class="badge-title">Fase Online — Out / Nov 2026</div>
+        <div class="badge-sub">Quinzenal · Sábados à tarde · Híbrido</div>
+      </div>
+    </div>
+
+    <div class="online-card">
+      <div class="oi-emoji">🌍</div>
+      <div>
+        <strong>Como funcionará a fase online</strong>
+        <p>Márcia Moraes retorna ao Brasil em 1º de Outubro. Os participantes deverão estar <strong>reunidos presencialmente em Felgueiras</strong> enquanto Márcia conduz à distância. A Vovó Maria Conga conduzirá os trabalhos espirituais.</p>
+        <div class="atv-row">
+          <span class="atv-chip">🕯️ Abertura da corrente</span>
+          <span class="atv-chip">🌿 Firmezas</span>
+          <span class="atv-chip">🔮 Desenvolvimento</span>
+          <span class="atv-chip">✨ Exercícios</span>
+          <span class="atv-chip">🙏 Encerramento</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENCERRAMENTO + JAN -->
+  <section class="section">
+    <div class="month-badge" style="background:linear-gradient(135deg,#0d2b52,#1b4f8a)">
+      <span class="badge-emoji">✨</span>
+      <div class="badge-text">
+        <div class="badge-title">Encerramento 2026</div>
+        <div class="badge-sub">Retorno a Portugal · Final Nov / Início Dez</div>
+      </div>
+    </div>
+
+    <div class="online-card" style="border-color:var(--navy);margin-bottom:1.5rem">
+      <div class="oi-emoji">🌸</div>
+      <div>
+        <strong>Fechamento Energético do Ano</strong>
+        <p>Avaliação da caminhada de cada médium · Novas iniciações · Continuidade do desenvolvimento · Planejamento da estrutura para 2027. Datas exatas a confirmar.</p>
+      </div>
+    </div>
+
+    <div class="month-badge" style="background:linear-gradient(135deg,#2e73c2,#4a9fe8)">
+      <span class="badge-emoji">🌱</span>
+      <div class="badge-text">
+        <div class="badge-title">Janeiro 2027 — Nova Etapa</div>
+        <div class="badge-sub">Expansão da Egrégora em Portugal</div>
+      </div>
+    </div>
+
+    <div class="intro-block" style="margin-top:.8rem">
+      <p>Em Janeiro de 2027 iniciaremos oficialmente uma nova etapa do Desenvolvimento Psicoespiritual, aprofundando os fundamentos da Egrégora Cria Ti na Luz e fortalecendo as bases espirituais que estão sendo construídas em Portugal.</p>
+    </div>
+  </section>
+
+  <!-- OBSERVAÇÕES -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Observações Importantes</h2>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="obs-list">
+      <div class="obs-item">
+        <span class="obs-emoji">🗓️</span>
+        <span class="obs-text">Os temas dos encontros de Agosto e Setembro serão definidos em conjunto com o grupo.</span>
+      </div>
+      <div class="obs-item">
+        <span class="obs-emoji">🏠</span>
+        <span class="obs-text">Alguns encontros incluirão atividades na Casa de Valdemar.</span>
+      </div>
+      <div class="obs-item">
+        <span class="obs-emoji">⏰</span>
+        <span class="obs-text">Os horários definitivos de Agosto e Setembro serão comunicados com antecedência.</span>
+      </div>
+      <div class="obs-item">
+        <span class="obs-emoji">🌍</span>
+        <span class="obs-text">Na fase online, todos os participantes devem estar reunidos presencialmente em Felgueiras.</span>
+      </div>
+      <div class="obs-item">
+        <span class="obs-emoji">🕯️</span>
+        <span class="obs-text">A condução espiritual à distância será realizada pela Vovó Maria Conga.</span>
+      </div>
+      <div class="obs-item">
+        <span class="obs-emoji">📖</span>
+        <span class="obs-text">O Fichário Iniciático é material pessoal e intransferível — entregue no primeiro encontro.</span>
+      </div>
+      <div class="obs-item">
+        <span class="obs-emoji">✅</span>
+        <span class="obs-text">Confirmações de presença devem ser comunicadas com antecedência.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITAÇÃO + ENCERRAMENTO -->
+  <div class="quote-block page-break">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Primeiro se constrói a raiz.<br>Depois nasce o tronco.<br>Só então a árvore pode sustentar os frutos.</p>
+    <p class="quote-attr">Vovó Maria Conga</p>
+  </div>
+
+  <div class="welcome">
+    <h3>Bem-vindos à Caminhada</h3>
+    <p>Que cada encontro fortaleça sua luz, amplie sua percepção<br>e aprofunde sua conexão com o sagrado.</p>
+  </div>
+
+</div><!-- /wrapper -->
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Egrégora Cria Ti na Luz</strong> · Portugal 2026 · Márcia Moraes<br>
+  Rua Nau São Gabriel, nº 102 · 4610-485 – Felgueiras, Portugal
+</footer>
+
+<!-- PRINT BUTTON -->
+<button class="print-btn no-print" onclick="window.print()">
+  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+    <path d="M6 9V2h12v7"/><rect x="6" y="17" width="12" height="5"/><path d="M6 12H4a2 2 0 0 0-2 2v3h4v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3h4v-3a2 2 0 0 0-2-2h-2"/>
+  </svg>
+  Imprimir / Salvar PDF
+</button>
+
+</body>
+</html>
