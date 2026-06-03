@@ -1276,7 +1276,7 @@
       </div>
 
       <div class="header-pill">
-        <span>✦</span> Portugal 2026 <span>✦</span>
+        <span aria-hidden="true">✦</span> <span class="header-pill-text">Portugal 2026</span> <span aria-hidden="true">✦</span>
       </div>
     </div>
 
@@ -1297,11 +1297,11 @@
       </a>
       <span class="meta-chip">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Julho 2026 → Janeiro 2027
+        <span class="meta-chip-text">Julho 2026 → Janeiro 2027</span>
       </span>
       <span class="meta-chip">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Responsável · Márcia Moraes
+        <span class="meta-chip-text">Responsável · Márcia Moraes</span>
       </span>
     </div>
 
@@ -1826,9 +1826,150 @@
 
 <!-- FOOTER -->
 <footer>
-  <strong>Egrégora Cria Ti na Luz</strong> · Portugal 2026 · Márcia Moraes<br>
+  <strong>Egrégora Cria Ti na Luz</strong><span class="footer-meta"> · Portugal 2026 · Márcia Moraes</span><br>
   <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Nau+S%C3%A3o+Gabriel+102+Felgueiras+Portugal" target="_blank" rel="noopener noreferrer">Rua Nau São Gabriel, nº 102 · 4610-485 – Felgueiras, Portugal</a>
 </footer>
+
+<script>
+  (() => {
+    const saved = localStorage.getItem('criaTiAdminConfig');
+    if (!saved) return;
+
+    let config;
+    try {
+      config = JSON.parse(saved);
+    } catch (error) {
+      console.warn('Configuração da página inválida.', error);
+      return;
+    }
+
+    const setText = (selector, value) => {
+      if (!value) return;
+      const element = document.querySelector(selector);
+      if (element) element.textContent = value;
+    };
+
+    const setHref = (selector, value) => {
+      if (!value) return;
+      document.querySelectorAll(selector).forEach((element) => {
+        element.href = value;
+      });
+    };
+
+    const setTextWithinSelector = (selector, value) => {
+      if (value === undefined || value === null) return;
+      document.querySelectorAll(selector).forEach((element) => {
+        element.textContent = value;
+      });
+    };
+
+    const escapeHtml = (value) => String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+    const buildWhatsAppLink = () => {
+      const message = encodeURIComponent(config.whatsappMessage || 'Tenho interesse no Curso de Desenvolvimento Psicoespiritual da Egrégora Cria Ti na Luz em Portugal.');
+      const number = String(config.whatsappNumber || '').replace(/\D/g, '');
+      return number ? `https://wa.me/${number}?text=${message}` : `https://wa.me/?text=${message}`;
+    };
+
+    setText('.header-sub', config.headerSubtitle);
+
+    if (config.headerTitleMain || config.headerTitleHighlight) {
+      const h1 = document.querySelector('header h1');
+      const mainTitle = config.headerTitleMain || 'Egrégora';
+      const highlight = config.headerTitleHighlight || 'Cria Ti na Luz';
+      if (h1) h1.innerHTML = `${escapeHtml(mainTitle)}<br><em>${escapeHtml(highlight)}</em>`;
+    }
+
+    setText('.intro-block p:nth-child(1)', config.intro1);
+    setText('.intro-block p:nth-child(2)', config.intro2);
+    setText('.final-cta h3', config.finalTitle);
+    setText('.final-cta p', config.finalText);
+
+    if (config.contentOverrides && typeof config.contentOverrides === 'object') {
+      Object.entries(config.contentOverrides).forEach(([selector, value]) => {
+        setTextWithinSelector(selector, value);
+      });
+    }
+
+    if (config.formUrl) {
+      setHref('a[href*="forms.gle"], a[href*="docs.google.com/forms"]', config.formUrl);
+    }
+
+    if (config.whatsappNumber || config.whatsappMessage) {
+      setHref('.whatsapp-button', buildWhatsAppLink());
+    }
+
+    if (config.address) {
+      const mapQuery = encodeURIComponent(config.address);
+      const mapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+      const headerAddress = document.querySelector('.header-meta .map-chip');
+      const footerAddress = document.querySelector('.footer-map-link');
+
+      if (headerAddress) {
+        const svg = headerAddress.querySelector('svg')?.outerHTML || '';
+        headerAddress.innerHTML = `${svg}\n        ${config.address}`;
+        headerAddress.href = mapUrl;
+      }
+
+      if (footerAddress) {
+        footerAddress.textContent = config.address;
+        footerAddress.href = mapUrl;
+      }
+    }
+
+    if (Array.isArray(config.events)) {
+      const cardsByNumber = new Map([...document.querySelectorAll('.card')].map((card) => {
+        return [card.querySelector('.num-circle')?.textContent.trim(), card];
+      }));
+
+      config.events.forEach((event) => {
+        const card = cardsByNumber.get(String(event.number).padStart(2, '0'));
+        const targetStack = card?.closest('.cards-stack');
+        if (card && targetStack) targetStack.appendChild(card);
+      });
+
+      config.events.forEach((event) => {
+        if (!event.number) return;
+
+        const card = [...document.querySelectorAll('.card')].find((item) => {
+          return item.querySelector('.num-circle')?.textContent.trim() === String(event.number).padStart(2, '0');
+        });
+        if (!card) return;
+
+        setTextWithin(card, '.card-date', event.date);
+        setTextWithin(card, '.pill-hora', event.time);
+        setTextWithin(card, '.card-tema', event.title);
+        setTextWithin(card, '.card-desc', event.description);
+        setTextWithin(card, '.pill-mod', event.mode);
+
+        const note = card.querySelector('.pill-obs');
+        if (event.note) {
+          if (note) {
+            note.textContent = event.note;
+          } else {
+            const newNote = document.createElement('span');
+            newNote.className = 'pill pill-obs';
+            newNote.textContent = event.note;
+            card.querySelector('.card-top')?.appendChild(newNote);
+          }
+        } else if (note) {
+          note.remove();
+        }
+      });
+    }
+
+    function setTextWithin(parent, selector, value) {
+      if (!value) return;
+      const element = parent.querySelector(selector);
+      if (element) element.textContent = value;
+    }
+  })();
+</script>
 
 <script>
   (() => {
@@ -1850,6 +1991,15 @@
 
     const location = 'Rua Nau São Gabriel, nº 102, 4610-485 Felgueiras, Portugal';
     const calendarName = 'Egrégora Cria Ti na Luz';
+    let savedCalendarConfig = {};
+    try {
+      savedCalendarConfig = JSON.parse(localStorage.getItem('criaTiAdminConfig') || '{}');
+    } catch (error) {
+      savedCalendarConfig = {};
+    }
+    const calendarButtonText = savedCalendarConfig.calendarButtonText
+      || savedCalendarConfig.contentOverrides?.['.calendar-button']
+      || '+ Adicionar à agenda';
 
     const normalize = (value) => value
       .normalize('NFD')
@@ -1882,25 +2032,40 @@
       .slice(0, 70);
 
     const parseEventDate = (dateText, timeText) => {
-      if (!dateText || !timeText || /confirmar/i.test(timeText)) return null;
+      if (!dateText) return null;
 
       const dateMatch = dateText.match(/(\d{1,2})\s+de\s+([A-Za-zÀ-ÿ]+)/);
-      const timeMatch = timeText.match(/(\d{1,2})h(?:(\d{2}))?/i);
-      if (!dateMatch || !timeMatch) return null;
+      if (!dateMatch) return null;
 
       const day = Number(dateMatch[1]);
       const month = monthMap[normalize(dateMatch[2])];
+      if (month === undefined) return null;
+
+      const timeMatch = String(timeText || '').match(/(\d{1,2})h(?:(\d{2}))?/i);
+      if (!timeMatch || /confirmar/i.test(timeText || '')) {
+        return { start: new Date(2026, month, day, 0, 0, 0), allDay: true };
+      }
+
       const hour = Number(timeMatch[1]);
       const minute = Number(timeMatch[2] || 0);
-
-      if (month === undefined) return null;
-      return new Date(2026, month, day, hour, minute, 0);
+      return { start: new Date(2026, month, day, hour, minute, 0), allDay: false };
     };
 
-    const buildIcs = ({ title, description, start }) => {
-      const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+    const formatIcsDay = (date) => [
+      date.getFullYear(),
+      pad(date.getMonth() + 1),
+      pad(date.getDate())
+    ].join('');
+
+    const buildIcs = ({ title, description, start, allDay }) => {
+      const end = allDay
+        ? new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1)
+        : new Date(start.getTime() + 2 * 60 * 60 * 1000);
       const now = new Date();
-      const uid = `${formatIcsDate(start)}-${slugify(title)}@criatinaluz`;
+      const uid = `${allDay ? formatIcsDay(start) : formatIcsDate(start)}-${slugify(title)}@criatinaluz`;
+      const dateLines = allDay
+        ? [`DTSTART;VALUE=DATE:${formatIcsDay(start)}`, `DTEND;VALUE=DATE:${formatIcsDay(end)}`]
+        : [`DTSTART;TZID=Europe/Lisbon:${formatIcsDate(start)}`, `DTEND;TZID=Europe/Lisbon:${formatIcsDate(end)}`];
 
       return [
         'BEGIN:VCALENDAR',
@@ -1911,8 +2076,7 @@
         'BEGIN:VEVENT',
         `UID:${uid}`,
         `DTSTAMP:${formatIcsDate(now)}Z`,
-        `DTSTART;TZID=Europe/Lisbon:${formatIcsDate(start)}`,
-        `DTEND;TZID=Europe/Lisbon:${formatIcsDate(end)}`,
+        ...dateLines,
         `SUMMARY:${escapeIcs(title)}`,
         `DESCRIPTION:${escapeIcs(description)}`,
         `LOCATION:${escapeIcs(location)}`,
@@ -1940,19 +2104,20 @@
       const titleText = card.querySelector('.card-tema')?.textContent.trim();
       const descText = card.querySelector('.card-desc')?.textContent.trim();
       const cardTop = card.querySelector('.card-top');
-      const start = parseEventDate(dateText, timeText);
+      const eventDate = parseEventDate(dateText, timeText);
 
-      if (!cardTop || !start || !titleText) return;
+      if (!cardTop || !eventDate || !titleText) return;
 
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'calendar-button';
-      button.innerHTML = '<span aria-hidden="true">+</span> Adicionar à agenda';
+      button.textContent = calendarButtonText;
       button.addEventListener('click', () => {
         downloadCalendarFile({
           title: `${calendarName}: ${titleText}`,
-          description: `${dateText} · ${timeText}\\n${descText || ''}`,
-          start
+          description: `${dateText} · ${timeText || 'Horário a confirmar'}\\n${descText || ''}`,
+          start: eventDate.start,
+          allDay: eventDate.allDay
         });
       });
 
